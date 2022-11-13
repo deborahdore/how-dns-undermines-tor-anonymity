@@ -15,6 +15,9 @@ from utility import *
 
 def classify(dataset, output_acc):
     """Function that runs the classification pipeline."""
+
+    print(f'Dataset length: {dataset.shape[0]}')
+
     X = dataset[['lengths']]
 
     y = dataset[['target']]
@@ -50,11 +53,11 @@ def classify(dataset, output_acc):
         f.write("AUROC: " + str(auroc))
 
     metrics.plot_roc_curve(pipeline, X_test, y_test, drop_intermediate=False)
-    plt.show()
+    #plt.show()
     plt.savefig(RESULTS_DIR + "/roc_curve.svg", dpi=1200)
 
     metrics.plot_precision_recall_curve(pipeline, X_test, y_test)
-    plt.show()
+    #plt.show()
     plt.savefig(RESULTS_DIR + "/precision_recall_curve.svg", dpi=1200)
 
 
