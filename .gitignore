@@ -5,8 +5,10 @@
 *.vagrant
 .vagrant
 datasets
-src/classification/models
+datasets/*
 
+src/classification/models
+src/classification/models/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
