@@ -6,7 +6,8 @@
 .vagrant
 
 src/classification/models
-
+datasets/OW
+datasets/LOC1
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -137,3 +138,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /datasets/
+/datasets/OW/
