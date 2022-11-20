@@ -4,6 +4,7 @@
 *.DS_Store
 *.vagrant
 .vagrant
+*.json
 
 src/classification/models
 datasets/OW

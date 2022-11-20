@@ -23,7 +23,7 @@ def create_search_cv():
     :return: A randomized search cross validation object
     """
     # num of trees
-    n_estimators = [int(x) for x in np.linspace(start=200, stop=1000, num=10)]
+    n_estimators = [int(x) for x in np.linspace(start=200, stop=500, num=10)]
     # Number of features to consider at every split
     max_features = ["sqrt", "log2"]
     # Maximum number of levels in tree
@@ -181,6 +181,8 @@ def ow_experiment(X, y):
     print("Saving best model")
     save_model(pipeline['rs_cv'].best_estimator_, RANDOM_FOREST_FILE)
 
+    # Best params: {'n_estimators': 733, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt',
+    # 'max_depth': 40, 'bootstrap': False}
     print(f"Best params: {pipeline['rs_cv'].best_params_}")
 
 

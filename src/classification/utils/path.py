@@ -31,8 +31,8 @@ ALL_URL_LIST = join(COLLECTION_DIR, 'short_list_1500')
 
 # base -> src -> dataset -> OW: directory with the ngrams of unmonitored websites
 DATASET_OPEN_WORLD = join(DATASET_DIR, 'OW')
-# base -> src -> dataset -> LOC3: directory with the ngrams of monitored websites
-DATASET_CLOSED_WORLD = join(DATASET_DIR, "LOC3")
+# base -> src -> dataset -> LOC1: directory with the ngrams of monitored websites
+DATASET_CLOSED_WORLD = join(DATASET_DIR, "LOC1")
 
 # base -> src -> classification -> models : file with the model
 RANDOM_FOREST_FILE = join(MODELS_DIR, "random_forest.pkl")

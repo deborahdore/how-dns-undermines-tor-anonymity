@@ -12,7 +12,7 @@ while true; do
 		sleep 2
 		sudo systemctl start cloudflared
 		sleep 2
-		python /vagrant/chrome_driver.py "$i"
+		python3 /vagrant/chrome_driver.py "$i"
 		sleep 2
 		sudo systemctl stop cloudflared
 		sleep 2
