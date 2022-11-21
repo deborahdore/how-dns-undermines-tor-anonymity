@@ -1,7 +1,7 @@
-# how-DNS-undermines-Tor-anonymity
+# How DNS undermines Tor anonymity
 
 The goal of the repository is to reproduce the model of the paper by Sandra Siby, Marc Juarez, Claudia Diaz,
-Narseo Vallina-Rodriguez, Carmela Troncoso: "Encrypted DNS --> Privacy? A Traffic Analysis Perspective" and tune it to
+Narseo Vallina-Rodriguez, Carmela Troncoso: _Encrypted DNS --> Privacy? A Traffic Analysis Perspective_ and tune it to
 obtain better attacks result.
 
 The repository is organized as follows:
@@ -18,10 +18,10 @@ The repository is organized as follows:
       the *[open-world dataset](https://github.com/spring-epfl/doh_traffic_analysis/tree/master/dataset/OW])*
       and *[closed-world dataset CW](https://github.com/spring-epfl/doh_traffic_analysis/tree/master/dataset/CW])*
       previously collected by the authors of the paper.
-    - [paper](reports): contains the report for the project course
+    - [reports](reports): contains the reports for the project course
 
 *To run the whole experiment do*:
 
 1. [collection](/src/collection)
 2. [extraction](/src/extraction)
-2. [classification](/src/classification)
+3. [classification](/src/classification)
