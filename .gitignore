@@ -8,7 +8,7 @@
 
 src/classification/models
 datasets/OW
-datasets/LOC1
+datasets/CW
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

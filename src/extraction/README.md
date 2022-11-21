@@ -11,7 +11,7 @@ It works as follows:
 4. The new dataset can be found in the same directory under the
    name [result_PCAP_extraction.json](result_PCAP_extraction.json)
 5. Move the file to the [dataset](../../datasets) directory for the classifier to use it in the next training
-   - If the PCAP files where created by making DNS request to the sites listed
-       in [short_list_1500](../collection/short_list_1500), insert the new dataset into
-       the [LOC1 dataset](../../datasets/LOC1) that contains the dataset for the monitored sites
-   - otherwise insert into [OW dataset](../../datasets/OW) that contains the dataset for the unmonitored sites
+    - If the PCAP files where created by making DNS request to the sites listed
+      in [short_list_1500](../collection/short_list_1500), insert the new dataset into
+      the [CW dataset](../../datasets/CW) that contains the dataset for the monitored sites
+    - otherwise insert into [OW dataset](../../datasets/OW) that contains the dataset for the unmonitored sites
