@@ -1,7 +1,6 @@
 import sys
 import time
 
-from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 
@@ -18,8 +17,6 @@ with open(fname) as f:
 
 url = urls[int(sys.argv[1])]
 print(url)
-display = Display(visible=0, size=(800, 800))
-display.start()
 print("Started display")
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
@@ -34,7 +31,6 @@ try:
 except TimeoutException as ex:
     print(ex)
 driver.quit()
-display.stop()
 stop = time.time()
 print("Time taken:" + str(stop - start))
 time.sleep(INTERVAL_TIME)

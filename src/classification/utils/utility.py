@@ -5,9 +5,8 @@ import re
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import label_binarize
-
 from classification.utils.path import ALL_URL_LIST, DATASET_CLOSED_WORLD, DATASET_OPEN_WORLD
+from sklearn.preprocessing import label_binarize
 
 PATH_REGEX = {'name': r'(?P<name>\w+)',
               'dev': r'(?:(?P<dev>[^_]+)_)?',

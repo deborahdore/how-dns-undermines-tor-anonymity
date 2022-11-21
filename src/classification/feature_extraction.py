@@ -1,7 +1,6 @@
 # A class that is used to convert a collection of text documents to a matrix of token counts.
-from sklearn.feature_extraction.text import CountVectorizer
-
 from classification.utils.utility import *
+from sklearn.feature_extraction.text import CountVectorizer
 
 
 class NgramsExtractor:

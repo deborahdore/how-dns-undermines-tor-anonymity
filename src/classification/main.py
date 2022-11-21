@@ -1,6 +1,9 @@
 import warnings
 
 import matplotlib.pyplot as plt
+from classification.utils.path import RESULTS_DIR, RANDOM_FOREST_FILE, \
+    OUTPUT_REPORT, ROC_CURVE_FILE, PR_CURVE_FILE
+from classification.utils.utility import *
 from sklearn import metrics
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score, classification_report
@@ -8,9 +11,6 @@ from sklearn.model_selection import cross_validate
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.pipeline import FeatureUnion, Pipeline
 
-from classification.utils.path import RESULTS_DIR, RANDOM_FOREST_FILE, \
-    OUTPUT_REPORT, ROC_CURVE_FILE, PR_CURVE_FILE
-from classification.utils.utility import *
 from src.classification.feature_extraction import NgramsExtractor
 
 warnings.filterwarnings("ignore")
