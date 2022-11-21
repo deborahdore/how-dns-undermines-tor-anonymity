@@ -182,7 +182,7 @@ def create_random_grid():
     :return: A dictionary of the parameters to be used in the random search.
     """
     # num of trees
-    n_estimators = [int(x) for x in np.linspace(start=200, stop=500, num=10)]
+    n_estimators = [int(x) for x in np.linspace(start=200, stop=1000, num=10)]
     # Number of features to consider at every split
     max_features = ["sqrt", "log2"]
     # Maximum number of levels in tree

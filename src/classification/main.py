@@ -67,6 +67,7 @@ def evaluation(X_train, X_test, y_train, y_test):
     df['recall'] = recall[:-1]
     df['threshold'] = threshold
     df['f1-score'] = (2 * precision[:-1] * recall[:-1]) / (precision[:-1] + recall[:-1])
+    df = df[df.threshold.isin([0.2, 0.5, 0.8, 1])]
     df.to_csv(OUTPUT_PRT, index=False)
 
 
@@ -84,11 +85,9 @@ def ow_experiment(X_train, y_train):
 
     rf_random = RandomizedSearchCV(estimator=RandomForestClassifier(n_jobs=-1),
                                    param_distributions=random_grid,
-                                   n_iter=100,
+                                   n_iter=200,
                                    cv=5,
-                                   scoring="f1",
-                                   verbose=2,
-                                   random_state=42,
+                                   scoring=["f1", "recall"],
                                    n_jobs=-1)
 
     pipeline = Pipeline([
