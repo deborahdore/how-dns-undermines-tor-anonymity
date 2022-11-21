@@ -25,3 +25,7 @@ The repository is organized as follows:
 1. [collection](/src/collection)
 2. [extraction](/src/extraction)
 3. [classification](/src/classification)
+
+*Note:*
+We suggest using anaconda and creating a new environment using the [requirements](requirements.txt) file to install the
+correct packages.
