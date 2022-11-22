@@ -8,7 +8,7 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.pipeline import FeatureUnion, Pipeline
 
 from src.classification.feature_extraction import NgramsExtractor
-from src.classification.utils.path import OUTPUT_REPORT, ROC_CURVE_FILE, PR_CURVE_FILE, OUTPUT_PRT
+from src.classification.utils.path import OUTPUT_REPORT, ROC_CURVE_FILE, PR_CURVE_FILE
 from src.classification.utils.utility import *
 from src.classification.utils.utility import load_model, create_random_grid
 
@@ -61,15 +61,6 @@ def evaluation(X_train, X_test, y_train, y_test):
     plt.savefig(PR_CURVE_FILE, dpi=1200)
     plt.close()
 
-    # DEFINE PRECISION, RECALL AND F1-SCORE FOR EACH THRESHOLD
-    df = pd.DataFrame()
-    df['precision'] = precision[:-1]
-    df['recall'] = recall[:-1]
-    df['threshold'] = threshold
-    df['f1-score'] = (2 * precision[:-1] * recall[:-1]) / (precision[:-1] + recall[:-1])
-    df = df[df.threshold.isin([0.2, 0.5, 0.8, 1])]
-    df.to_csv(OUTPUT_PRT, index=False)
-
 
 def ow_experiment(X_train, y_train):
     """
@@ -87,7 +78,7 @@ def ow_experiment(X_train, y_train):
                                    param_distributions=random_grid,
                                    n_iter=200,
                                    cv=5,
-                                   scoring=["f1", "recall"],
+                                   scoring="recall",
                                    n_jobs=-1)
 
     pipeline = Pipeline([

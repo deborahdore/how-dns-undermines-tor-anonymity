@@ -25,7 +25,6 @@ DATASET_CLOSED_WORLD = join(DATASET_DIR, "CW")
 RANDOM_FOREST_FILE = join(MODELS_DIR, "random_forest.pkl")
 
 OUTPUT_REPORT = join(RESULTS_DIR, 'ow_report_result.txt')
-OUTPUT_PRT = join(RESULTS_DIR, 'ow_prt_results.csv')
 
 ROC_CURVE_FILE = join(PLOT_DIR, "roc_curve.svg")
 PR_CURVE_FILE = join(PLOT_DIR, "precision_recall_curve.svg")

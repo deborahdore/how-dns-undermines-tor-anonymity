@@ -19,4 +19,5 @@ In order to collect data, perform the following steps:
 9. Move the PCAP files into the [extraction folder](../extraction/pcap) to extract information
 
 **Note**:
+
 - the user must have Chrome installed
