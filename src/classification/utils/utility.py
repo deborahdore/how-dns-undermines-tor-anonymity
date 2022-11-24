@@ -9,7 +9,7 @@ from loguru import logger
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import label_binarize
 
-from src.classification.utils.path import ALL_URL_LIST, DATASET_CLOSED_WORLD, DATASET_OPEN_WORLD, RANDOM_FOREST_FILE
+from src.classification.utils.path import ALL_URL_LIST, DATASET_CLOSED_WORLD, DATASET_OPEN_WORLD
 
 PATH_REGEX = {'name': r'(?P<name>\w+)',
               'dev': r'(?:(?P<dev>[^_]+)_)?',
@@ -143,11 +143,12 @@ def load_split_dataset():
     logger.info("Load Dataset")
 
     # open world data
-    df_monitored = load_data(DATASET_CLOSED_WORLD)
-    df_monitored['target'] = "monitored"
-
     df_unmonitored = load_data(DATASET_OPEN_WORLD)
     df_unmonitored['target'] = "unmonitored"
+
+    # closed world data
+    df_monitored = load_data(DATASET_CLOSED_WORLD)
+    df_monitored['target'] = "monitored"
 
     logger.info(f'Size monitored dataset: {df_monitored.shape[0]}')
     logger.info(f'Size unmonitored dataset: {df_unmonitored.shape[0]}')
@@ -168,15 +169,40 @@ def load_split_dataset():
     return X_train, X_test, y_train, y_test
 
 
-def load_model():
+def load_model(path):
     """
     It loads the model from the file `RANDOM_FOREST_FILE` and returns it
     :return: The model is being returned.
     """
-    return joblib.load(RANDOM_FOREST_FILE)
+    return joblib.load(path)
 
 
-def create_random_grid():
+def create_random_grid_knn():
+    """
+    It creates a dictionary of parameters for the KNN classifier
+    :return: A dictionary of parameters for the KNN classifier.
+    """
+    grid_params = {'n_neighbors': [5, 7, 9, 11, 13, 15],
+                   'weights': ['uniform', 'distance'],
+                   'metric': ['minkowski', 'euclidean', 'manhattan'],
+                   'algorithm': ['ball_tree', 'kd_tree', 'auto']}
+    return grid_params
+
+
+def create_random_grid(model_type):
+    """
+    If the model type is RF, return the random grid for RF. Otherwise, return the random grid for KNN
+
+    :param model_type: The type of model to use. Either "RF" or "KNN"
+    :return: A dictionary of parameters and their values
+    """
+    if model_type == "RF":
+        return create_random_grid_rf()
+    else:
+        return create_random_grid_knn()
+
+
+def create_random_grid_rf():
     """
     It creates a dictionary of hyperparameters to be used in a random search
     :return: A dictionary of the parameters to be used in the random search.

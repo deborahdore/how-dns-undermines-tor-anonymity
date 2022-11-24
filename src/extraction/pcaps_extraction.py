@@ -8,7 +8,7 @@ MY_MAC = "08:00:27:97:3f:45"
 # directory where pcap files are stored
 PCAP_DIR = "./pcap"
 # file where resulting dataset is saved
-RESULT_FILE = "../result_PCAP_extraction.json"
+RESULT_FILE = f"../{datetime.today().strftime('%Y-%m-%d')}.json"
 
 
 def direction(pkt_dir):
