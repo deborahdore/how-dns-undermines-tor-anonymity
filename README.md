@@ -27,8 +27,8 @@ The repository is organized as follows:
 
 - [dataset](datasets): contains the dataset used to train the model. Since the acquisition alone required too much
   time, the dataset is integrated with
-  the *[open-world dataset](https://github.com/spring-epfl/doh_traffic_analysis/tree/master/dataset/OW])*
-  and *[closed-world dataset CW](https://github.com/spring-epfl/doh_traffic_analysis/tree/master/dataset/CW])*
+  the *[open-world dataset](https://github.com/spring-epfl/doh_traffic_analysis/tree/master/dataset/OW)*
+  and *[closed-world dataset](https://github.com/spring-epfl/doh_traffic_analysis/tree/master/dataset/LOC1)*
   previously collected by the authors of the paper.
 - [paper](paper): contains the reports for the project course
 - [src](src): contains the sources
