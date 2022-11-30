@@ -189,9 +189,8 @@ def create_random_grid(model_type):
         return random_grid
 
     else:
-        grid_params = {  # 'n_neighbors': [5, 7, 9, 11, 13, 15],
-            'n_neighbors': [5, 7, 9],
-            'weights': ['uniform', 'distance'],
-            'metric': ['minkowski', 'euclidean', 'manhattan'],
-            'algorithm': ['ball_tree', 'kd_tree']}
+        grid_params = {'n_neighbors': [5, 7, 9, 11, 13, 15],
+                       'weights': ['uniform', 'distance'],
+                       'metric': ['minkowski', 'euclidean', 'manhattan'],
+                       'algorithm': ['ball_tree', 'kd_tree']}
         return grid_params

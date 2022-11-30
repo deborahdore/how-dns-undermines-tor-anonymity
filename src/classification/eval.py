@@ -4,9 +4,9 @@ from sklearn import metrics
 from sklearn.metrics import classification_report, precision_recall_curve, PrecisionRecallDisplay
 from sklearn.pipeline import Pipeline, FeatureUnion
 
-from src.classification.ngrams_extractor import NgramsExtractor
 from src.classification.const.const import RANDOM_FOREST_FILE, KNEIGHBORS_FILE, OUTPUT_REPORT, ROC_CURVE_FILE, \
     PR_CURVE_FILE
+from src.classification.ngrams_extractor import NgramsExtractor
 from src.classification.utils.utility import load_model
 
 

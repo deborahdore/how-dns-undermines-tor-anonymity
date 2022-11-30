@@ -7,8 +7,8 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline, FeatureUnion
 
-from src.classification.ngrams_extractor import NgramsExtractor
 from src.classification.const.const import RANDOM_FOREST_FILE, KNEIGHBORS_FILE
+from src.classification.ngrams_extractor import NgramsExtractor
 from src.classification.utils.utility import create_random_grid, save_model
 
 warnings.filterwarnings("ignore")
@@ -36,7 +36,7 @@ def train(X_train, y_train, model_type, ngrams=1):
 
     search_cv = RandomizedSearchCV(estimator=model,
                                    param_distributions=random_grid,
-                                   n_iter=50,
+                                   n_iter=100,
                                    cv=5,
                                    verbose=2,
                                    n_jobs=-1)

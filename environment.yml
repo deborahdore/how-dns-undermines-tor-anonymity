@@ -99,6 +99,6 @@ dependencies:
   - xz=5.2.6
   - zstd=1.5.2
   - pip:
-    - numpy==1.24.0.dev0+1094.ga7abbeec3
-    - scapy==2.5.0rc2
+      - numpy==1.24.0.dev0+1094.ga7abbeec3
+      - scapy==2.5.0rc2
 prefix: /Users/deborah/miniforge3/envs/tor-anonimity
