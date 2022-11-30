@@ -180,7 +180,7 @@ def create_random_grid(model_type):
     """
 
     if model_type == "RF":
-        random_grid = {'n_estimators': [int(x) for x in np.linspace(start=200, stop=1000, num=10)],  # number of trees
+        random_grid = {'n_estimators': [int(x) for x in np.linspace(start=50, stop=250, num=10)],  # number of trees
                        'max_features': ["sqrt", "log2"],  # Number of features to consider at every split
                        'max_depth': [int(x) for x in np.linspace(10, 110, num=11)],  # Maximum number of levels in tree
                        'min_samples_split': [2, 5, 10],  # Minimum number of samples required to split a node
@@ -189,8 +189,9 @@ def create_random_grid(model_type):
         return random_grid
 
     else:
-        grid_params = {'n_neighbors': [5, 7, 9, 11, 13, 15],
-                       'weights': ['uniform', 'distance'],
-                       'metric': ['minkowski', 'euclidean', 'manhattan'],
-                       'algorithm': ['ball_tree', 'kd_tree', 'auto']}
+        grid_params = {  # 'n_neighbors': [5, 7, 9, 11, 13, 15],
+            'n_neighbors': [5, 7, 9],
+            'weights': ['uniform', 'distance'],
+            'metric': ['minkowski', 'euclidean', 'manhattan'],
+            'algorithm': ['ball_tree', 'kd_tree']}
         return grid_params
