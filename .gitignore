@@ -139,4 +139,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /datasets/
+/datasets/CW/
 /datasets/OW/
+/src/classification/results/model/

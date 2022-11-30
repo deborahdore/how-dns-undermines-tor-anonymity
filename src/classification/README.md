@@ -10,15 +10,15 @@ the [plots](results/plot).
 
 - The dataset can be found [here](../../datasets).
 - The list of monitored websites used can be found [here](../collection/short_list_1500).
-- An already trained model can be found [here](models)
+- An already trained model can be found [here](results/model)
 
 ## Results
 
 Results display a good ability of the classifier to distinguish between classes. More details in
-the [report](/reports/Assignment%232.pdf).
+the [report].
 
-- Random Forest:
-![plot](results/plot/roc_curve_RF.svg)
-
-- KNN:
-![plot](results/plot/roc_curve_KNN.svg)
+------
+ROC Curve for the Random Forest Classifier using n=1 for the n-grams
+ROC Curve for the Random Forest Classifier using n=2 for the n-grams
+ROC Curve for the K Nearest Neighbor using n=1 for the n-grams
+ROC Curve for the K Nearest Neighbor using n=2 for the n-grams

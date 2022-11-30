@@ -1,15 +1,18 @@
 import json
 import os
 import re
+import warnings
 
 import joblib
 import numpy as np
-import pandas as pd
 from loguru import logger
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import label_binarize
 
-from src.classification.utils.path import ALL_URL_LIST, DATASET_CLOSED_WORLD, DATASET_OPEN_WORLD
+warnings.filterwarnings("ignore")
+import pandas as pd
+
+from src.classification.const.const import DATASET_CLOSED_WORLD, DATASET_OPEN_WORLD
 
 PATH_REGEX = {'name': r'(?P<name>\w+)',
               'dev': r'(?:(?P<dev>[^_]+)_)?',
@@ -107,29 +110,20 @@ def load_data(dpath):
             row_head['class_label'] = webpage_id
             row_head['lengths'] = lengths
             idx = idx.append(row_head, ignore_index=True)
-        logger.info(f'{i} sites in {fpath}')
+        logger.info(f'{i} sites in {os.path.basename(fpath)}')
     logger.info(f"Empty traces: {empties}")
 
     # fix some naming issues:
     idx['inst'] = idx.inst.fillna(0)
-    idx['date'] = pd.to_datetime(idx.date.str.replace('-18', '-2018'),
-                                 format='%d-%m-%Y')
+    idx['date'] = pd.to_datetime(idx.date.str.replace('-18', '-2018'), format='%d-%m-%Y')
     return idx
-
-
-def load_mapping():
-    """Return Alexa as a list."""
-    return [l.strip() for l in open(ALL_URL_LIST)]
-
-
-ALEXA_MAP = load_mapping()
 
 
 def save_model(model, name):
     """
     **The function takes in a model, serializes it, and saves it to a file.**
     :param model: the model to save
-    :param name: name of the file in which the model will be saved
+    :param name: name of the file in which the model will be results
     """
     joblib.dump(model, name)
 
@@ -177,54 +171,26 @@ def load_model(path):
     return joblib.load(path)
 
 
-def create_random_grid_knn():
-    """
-    It creates a dictionary of parameters for the KNN classifier
-    :return: A dictionary of parameters for the KNN classifier.
-    """
-    grid_params = {'n_neighbors': [5, 7, 9, 11, 13, 15],
-                   'weights': ['uniform', 'distance'],
-                   'metric': ['minkowski', 'euclidean', 'manhattan'],
-                   'algorithm': ['ball_tree', 'kd_tree', 'auto']}
-    return grid_params
-
-
 def create_random_grid(model_type):
     """
-    If the model type is RF, return the random grid for RF. Otherwise, return the random grid for KNN
+    The function takes in a model type (RF or KNN) and returns a dictionary of hyperparameters for that model
 
-    :param model_type: The type of model to use. Either "RF" or "KNN"
-    :return: A dictionary of parameters and their values
+    :param model_type: The type of model you want to create a random grid for
+    :return: A dictionary of parameters to be used in the RandomizedSearchCV function.
     """
+
     if model_type == "RF":
-        return create_random_grid_rf()
+        random_grid = {'n_estimators': [int(x) for x in np.linspace(start=200, stop=1000, num=10)],  # number of trees
+                       'max_features': ["sqrt", "log2"],  # Number of features to consider at every split
+                       'max_depth': [int(x) for x in np.linspace(10, 110, num=11)],  # Maximum number of levels in tree
+                       'min_samples_split': [2, 5, 10],  # Minimum number of samples required to split a node
+                       'min_samples_leaf': [1, 2, 4],  # Minimum number of samples required at each leaf node
+                       'bootstrap': [True, False]}  # Method of selecting samples for training each tree
+        return random_grid
+
     else:
-        return create_random_grid_knn()
-
-
-def create_random_grid_rf():
-    """
-    It creates a dictionary of hyperparameters to be used in a random search
-    :return: A dictionary of the parameters to be used in the random search.
-    """
-    # num of trees
-    n_estimators = [int(x) for x in np.linspace(start=200, stop=1000, num=10)]
-    # Number of features to consider at every split
-    max_features = ["sqrt", "log2"]
-    # Maximum number of levels in tree
-    max_depth = [int(x) for x in np.linspace(10, 110, num=11)]
-    max_depth.append(None)
-    # Minimum number of samples required to split a node
-    min_samples_split = [2, 5, 10]
-    # Minimum number of samples required at each leaf node
-    min_samples_leaf = [1, 2, 4]
-    # Method of selecting samples for training each tree
-    bootstrap = [True, False]
-    # Create the random grid
-    random_grid = {'n_estimators': n_estimators,
-                   'max_features': max_features,
-                   'max_depth': max_depth,
-                   'min_samples_split': min_samples_split,
-                   'min_samples_leaf': min_samples_leaf,
-                   'bootstrap': bootstrap}
-    return random_grid
+        grid_params = {'n_neighbors': [5, 7, 9, 11, 13, 15],
+                       'weights': ['uniform', 'distance'],
+                       'metric': ['minkowski', 'euclidean', 'manhattan'],
+                       'algorithm': ['ball_tree', 'kd_tree', 'auto']}
+        return grid_params
