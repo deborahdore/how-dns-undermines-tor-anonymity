@@ -5,14 +5,14 @@ import warnings
 
 import joblib
 import numpy as np
+import pandas as pd
 from loguru import logger
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import label_binarize
 
-warnings.filterwarnings("ignore")
-import pandas as pd
-
 from src.classification.const.const import DATASET_CLOSED_WORLD, DATASET_OPEN_WORLD
+
+warnings.filterwarnings("ignore")
 
 PATH_REGEX = {'name': r'(?P<name>\w+)',
               'dev': r'(?:(?P<dev>[^_]+)_)?',

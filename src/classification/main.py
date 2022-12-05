@@ -4,6 +4,10 @@ from src.classification.utils.utility import *
 
 
 def main():
+    """
+    It loads the dataset, splits it into training and test sets, and then trains and evaluates two different models (Random
+    Forest and K Nearest Neighbor) using two different n-gram sizes (1 and 2)
+    """
     X_train, X_test, y_train, y_test = load_split_dataset()
 
     max_length_ngram = [1, 2]

@@ -1,3 +1,5 @@
+# The code is defining the directories and files that will be used in the project.
+
 from os.path import join, abspath, dirname, pardir
 
 # # # # # #  DIRECTORIES

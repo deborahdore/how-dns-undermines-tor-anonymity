@@ -8,7 +8,7 @@ MY_MAC = "08:00:27:97:3f:45"
 # directory where pcap files are stored
 PCAP_DIR = "./pcap"
 # file where resulting dataset is results
-RESULT_FILE = f"../{datetime.today().strftime('%Y-%m-%d')}.json"
+RESULT_FILE = f"../result/{datetime.today().strftime('%Y-%m-%d')}.json"
 
 
 def direction(pkt_dir):
@@ -37,7 +37,7 @@ def get_size(pkt):
     return len(pkt)
 
 
-def create_df(source, target):
+def main(source, target):
     """
     It takes a source directory and a target file, processes file in the source directory and creates a new file - taget -
     with the resulting dataset
@@ -83,4 +83,4 @@ def create_df(source, target):
 
 
 if __name__ == '__main__':
-    create_df(PCAP_DIR, RESULT_FILE)
+    main(PCAP_DIR, RESULT_FILE)

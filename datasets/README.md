@@ -11,5 +11,4 @@ This directory contains the datasets collected and used for the experiment.
 
 *TO ADD WEBSITES*: <br>
 After collection all the pcaps file with the instruction in the [collection](/src/collection) folder, the
-script *[pcaps_extraction](../src/extraction/pcaps_extraction.py)* can be used to create the datasets. The pcaps file
-should be called with the identifier of the website to which the dns request were made.
+script *[pcaps_extraction](../src/extraction/pcaps_extraction.py)* can be used to create the datasets. 

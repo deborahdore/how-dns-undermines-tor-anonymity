@@ -12,7 +12,8 @@ In order to collect data, perform the following steps:
 4. Create two directories **pcaps** and **logs** inside the [collection](../collection) folder.
 5. Run the command `vagrant up` (should be run from inside the collection folder).
 6. If it doesn't run, try `vagrant reload --provision`.
-7. Log into the VM with the command `vagrant ssh nodeN`, where N is the ID of the machine.
+7. Log into the VM with the command `vagrant ssh nodeN`, where N is the ID of the machine (N = 1, in the current
+   configuration).
 8. To start the experiment run `bash /vagrant/browse_chrome.sh N >> /vagrant/logs/$1/browse1\_$(date +%Y-%m-%d) 2>&1 &`,
    where N is the ID of the machine. This will create numerous pcap files containing information about packets that will
    be extracted to form the dataset.

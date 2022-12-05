@@ -16,7 +16,7 @@ The experiment was executed 2 times: one with the uni-grams as features and one 
 ## Results
 
 Results display a good ability of the classifier to distinguish between classes. More details in
-the [report].
+the [report](../../paper/Assignment%232.pdf).
 
 ------
 ROC Curve and Precision-Recall Curve for the Random Forest Classifier using n=1 for the n-grams

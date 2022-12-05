@@ -24,9 +24,8 @@ sudo cloudflared service install
 sudo cp /vagrant/chromedriver /usr/local/bin/
 sudo cp /vagrant/resolv.conf /etc/
 
-
 sudo timedatectl set-timezone Europe/Zurich
 
-mkdir /vagrant/pcaps/$1
-mkdir /vagrant/pcaps2/$1
-mkdir /vagrant/logs/$1
+mkdir /vagrant/pcaps/"$1"
+mkdir /vagrant/pcaps2/"$1"
+mkdir /vagrant/logs/"$1"
