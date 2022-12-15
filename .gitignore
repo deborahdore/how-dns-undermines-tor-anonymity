@@ -4,11 +4,7 @@
 *.DS_Store
 *.vagrant
 .vagrant
-*.json
 
-src/classification/models
-datasets/OW
-datasets/CW
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -138,7 +134,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/datasets/
-/datasets/CW/
-/datasets/OW/
-/src/classification/results/model/
